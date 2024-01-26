@@ -117,8 +117,6 @@ def get_property_list_from_database(
         if cite_in in [multi_select["name"] for multi_select in result["properties"]["Cite_in"]["multi_select"]]
     ]
 
-    for result in results:
-        result["Cite_in"]["multi_select"][i]["name"]
     key_list = []
     for result in results:
         try:
