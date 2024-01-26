@@ -149,7 +149,6 @@ def get_bibtex_string_list_from_database(
     page_size: int = 100,
 ) -> List[str]:
     def retrieve_bibtex_string(result: dict) -> str:
-        print(result["properties"])
         return result["properties"]["Bibtex"]["rich_text"][0]["plain_text"]
 
     return get_property_list_from_database(
