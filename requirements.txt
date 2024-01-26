@@ -1,0 +1,5 @@
+bibtexparser
+keyring
+notion-client >= 0.9.0
+platformdirs
+setuptools
