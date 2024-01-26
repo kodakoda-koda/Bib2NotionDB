@@ -40,7 +40,6 @@ def add_publications_to_database(
     # todo retrieve the list of all the property and filter
     # todo update_database_with_publications check the empty fields and fill them
     client = Client(auth=token)
-    print(publications)
     for i, publication in enumerate(publications, start=1):
         print(f"{i}/{len(publications)}: {publication}")
 

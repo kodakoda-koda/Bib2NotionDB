@@ -55,7 +55,7 @@ def get_bibtex_str(entry: dict) -> str:
 
     database.entries = [copied_entry]
     bibtex_str = dumps(database)
-    return bibtex_str if len(bibtex_str) > 2000 else ""
+    return bibtex_str  # if len(bibtex_str) > 2000 else ""
 
 
 def get_publication_list(bib_database: BibDatabase) -> List[Publication]:
