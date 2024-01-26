@@ -93,6 +93,9 @@ def get_parser():
         help="File in which the bibtex entries will be saved.",
     )
     download_parser.add_argument(
+        "-c", "--cite_in", default=None, type=str, metavar="", required=True, help="What paper to cite in."
+    )
+    download_parser.add_argument(
         "-t",
         "--token",
         default=None,

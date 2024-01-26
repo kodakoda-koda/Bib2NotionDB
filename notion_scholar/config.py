@@ -25,11 +25,13 @@ class ConfigManager:
         self,
         token: Optional[str] = None,
         string: Optional[str] = None,
+        cite_in: Optional[str] = None,
         file_path: Optional[str] = None,
         database_id: Optional[str] = None,
     ):
         self.token = token
         self.string = string
+        self.cite_in = cite_in
         self.file_path = file_path
         self.database_id = database_id
 
@@ -37,7 +39,11 @@ class ConfigManager:
         self.config_path = directory_path.joinpath("config").with_suffix(".ini")
 
     def get_download_kwargs(self) -> dict:
-        return {"file_path": coerce_to_absolute_path(path=self.file_path), **self._get_sanitized_kwargs()}
+        return {
+            "file_path": coerce_to_absolute_path(path=self.file_path),
+            "cite_in": self.cite_in,
+            **self._get_sanitized_kwargs(),
+        }
 
     def get_run_kwargs(self) -> dict:
         config = self.get()

@@ -4,6 +4,7 @@ from notion_scholar.utilities import write_to_file
 
 def download(
     file_path: str,
+    cite_in: str,
     token: str,
     database_id: str,
 ) -> int:
@@ -12,6 +13,7 @@ def download(
 
     Args:
         file_path: File path in which the bibliography will be saved.
+        cite_in: hogehoge
         token: Notion API token.
         database_id: Targeted database id.
 
@@ -19,6 +21,7 @@ def download(
         Error code.
     """
     bibtex_str_list = get_bibtex_string_list_from_database(
+        cite_in=cite_in,
         token=token,
         database_id=database_id,
     )
