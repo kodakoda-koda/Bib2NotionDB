@@ -52,6 +52,7 @@ def get_bibtex_str(entry: dict) -> str:
     copied_entry = dict(entry)
     if len(bibtex_str) > 2000:
         copied_entry.pop("abstract", None)
+        copied_entry.pop("abstractnote", None)
 
     database.entries = [copied_entry]
     bibtex_str = dumps(database)
