@@ -111,6 +111,7 @@ def get_property_list_from_database(
         )
         results.extend(query["results"])
 
+    print(results[0].keys())
     results = [
         result
         for result in results
