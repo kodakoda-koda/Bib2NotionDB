@@ -1,7 +1,6 @@
 from typing import List
 
-from bibtexparser import dumps
-from bibtexparser import load
+from bibtexparser import dumps, load
 from bibtexparser.bibdatabase import BibDatabase
 from bibtexparser.bparser import BibTexParser
 
@@ -18,7 +17,7 @@ def get_bib_database_from_file(file_path: str) -> BibDatabase:
         BibDatabase object that contains the instances present in the
         file.
     """
-    with open(file_path, encoding='utf-8') as bibtex_file:
+    with open(file_path, encoding="utf-8") as bibtex_file:
         parser = BibTexParser(
             common_strings=True,
             ignore_nonstandard_types=False,
@@ -52,11 +51,11 @@ def get_bibtex_str(entry: dict) -> str:
 
     copied_entry = dict(entry)
     if len(bibtex_str) > 2000:
-        copied_entry.pop('abstract', None)
+        copied_entry.pop("abstract", None)
 
     database.entries = [copied_entry]
     bibtex_str = dumps(database)
-    return bibtex_str if len(bibtex_str) > 2000 else ''
+    return bibtex_str if len(bibtex_str) > 2000 else ""
 
 
 def get_publication_list(bib_database: BibDatabase) -> List[Publication]:
@@ -72,15 +71,15 @@ def get_publication_list(bib_database: BibDatabase) -> List[Publication]:
     for entry in bib_database.entries:
         publications.append(
             Publication(
-                key=entry.get('ID', ''),
-                title=entry.get('title', ''),
-                authors=entry.get('author', '').replace('\n', ' '),
-                year=int(entry['year']) if 'year' in entry.keys() else None,
-                journal=entry.get('journal', ''),
-                url=entry.get('url', ''),
-                abstract=entry.get('abstract', ''),
-                doi=entry.get('doi', ''),
-                type=entry.get('ENTRYTYPE', '').lower(),
+                key=entry.get("ID", ""),
+                title=entry.get("title", ""),
+                authors=entry.get("author", "").replace("\n", " "),
+                year=int(entry["year"]) if "year" in entry.keys() else None,
+                journal=entry.get("journal", ""),
+                url=entry.get("url", ""),
+                abstract=entry.get("abstract", ""),
+                doi=entry.get("doi", ""),
+                type=entry.get("ENTRYTYPE", "").lower(),
                 bibtex=get_bibtex_str(entry),
             ),
         )
@@ -97,4 +96,4 @@ def get_key_list(bib_file_path: str) -> list:
         List of IDs.
     """
     bib_database = get_bib_database_from_file(bib_file_path)
-    return [entry['ID'] for entry in bib_database.entries]
+    return [entry["ID"] for entry in bib_database.entries]

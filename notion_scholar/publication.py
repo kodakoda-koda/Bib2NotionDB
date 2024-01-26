@@ -3,6 +3,7 @@ from typing import NamedTuple
 
 class Publication(NamedTuple):
     """NamedTuple object used to store a bibtex publication reference."""
+
     key: str
     title: str
     authors: str

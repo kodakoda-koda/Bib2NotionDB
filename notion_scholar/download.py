@@ -3,9 +3,9 @@ from notion_scholar.utilities import write_to_file
 
 
 def download(
-        file_path: str,
-        token: str,
-        database_id: str,
+    file_path: str,
+    token: str,
+    database_id: str,
 ) -> int:
     """Write the bibliography from the database `database_id` in the file
     located at `file_path`.
@@ -23,8 +23,7 @@ def download(
         database_id=database_id,
     )
     write_to_file(
-        content='\n\n'.join(bibtex_str_list),
+        content="\n\n".join(bibtex_str_list),
         file_path=file_path,
-
     )
     return 0
