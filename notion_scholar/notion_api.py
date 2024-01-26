@@ -111,11 +111,10 @@ def get_property_list_from_database(
         )
         results.extend(query["results"])
 
-    print(results[0].keys())
     results = [
         result
         for result in results
-        if cite_in in [multi_select["name"] for multi_select in result["Cite_in"]["multi_select"]]
+        if cite_in in [multi_select["name"] for multi_select in result["properties"]["Cite_in"]["multi_select"]]
     ]
 
     for result in results:
