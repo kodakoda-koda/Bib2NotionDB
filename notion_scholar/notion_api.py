@@ -89,6 +89,37 @@ def add_publications_to_database(
 
 
 def get_property_list_from_database(
+    token: str,
+    database_id: str,
+    retriever: Callable[[dict], Any],
+    page_size: int = 100,
+) -> List[str]:
+    notion = Client(auth=token)
+
+    results = []
+    query = notion.databases.query(
+        database_id=database_id,
+        page_size=page_size,
+    )
+    results.extend(query["results"])
+    while query["next_cursor"] or (query["results"] is None and not results):
+        query = notion.databases.query(
+            database_id=database_id,
+            start_cursor=query["next_cursor"],
+            page_size=page_size,
+        )
+        results.extend(query["results"])
+
+    key_list = []
+    for result in results:
+        try:
+            key_list.append(retriever(result))
+        except IndexError:
+            pass
+    return key_list
+
+
+def get_property_cite_list_from_database(
     cite_in: str,
     token: str,
     database_id: str,
@@ -151,7 +182,7 @@ def get_bibtex_string_list_from_database(
     def retrieve_bibtex_string(result: dict) -> str:
         return result["properties"]["Bibtex"]["rich_text"][0]["plain_text"]
 
-    return get_property_list_from_database(
+    return get_property_cite_list_from_database(
         cite_in=cite_in,
         token=token,
         database_id=database_id,
