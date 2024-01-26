@@ -102,17 +102,15 @@ def get_property_list_from_database(
         database_id=database_id,
         page_size=page_size,
     )
-    if cite_in in query["results"]["properties"]["cite_in"]:
-        results.extend(query["results"])
+    results.extend(query["results"])
     while query["next_cursor"] or (query["results"] is None and not results):
         query = notion.databases.query(
             database_id=database_id,
             start_cursor=query["next_cursor"],
             page_size=page_size,
         )
-        if cite_in in query["results"]["properties"]["cite_in"]:
-            results.extend(query["results"])
-
+        results.extend(query["results"])
+    print(results)
     key_list = []
     for result in results:
         try:
