@@ -38,7 +38,7 @@ def get_token() -> Optional[str]:  # Add returns
     Returns:
         A string containing the token or `None` if the token does not exist.
     """
-    return keyring.get_password("notion-scholar", "token")
+    return keyring.get_password("bib2notiondb", "token")
 
 
 def coerce_to_absolute_path(path: str, warn: bool = False) -> str:

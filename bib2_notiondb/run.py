@@ -2,17 +2,17 @@ from typing import List, Optional
 
 from bibtexparser.bibdatabase import BibDatabase
 
-from notion_scholar.bibtex import (
+from bib2_notiondb.bibtex import (
     get_bib_database_from_file,
     get_bib_database_from_string,
     get_publication_list,
 )
-from notion_scholar.notion_api import (
+from bib2_notiondb.notion_api import (
     add_publications_to_database,
     get_publication_key_list_from_database,
 )
-from notion_scholar.publication import Publication
-from notion_scholar.utilities import NotionScholarException
+from bib2_notiondb.publication import Publication
+from bib2_notiondb.utilities import NotionScholarException
 
 
 class IllegalArgumentException(NotionScholarException):

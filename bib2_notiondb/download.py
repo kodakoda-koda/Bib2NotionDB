@@ -1,5 +1,5 @@
-from notion_scholar.notion_api import get_bibtex_string_list_from_database
-from notion_scholar.utilities import write_to_file
+from bib2_notiondb.notion_api import get_bibtex_string_list_from_database
+from bib2_notiondb.utilities import write_to_file
 
 
 def download(
@@ -13,7 +13,7 @@ def download(
 
     Args:
         file_path: File path in which the bibliography will be saved.
-        cite_in: hogehoge
+        cite_in: Which paper to download.
         token: Notion API token.
         database_id: Targeted database id.
 

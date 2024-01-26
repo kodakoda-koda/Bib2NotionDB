@@ -1,10 +1,10 @@
 import argparse
 import sys
 
-from notion_scholar.config import ConfigManager
-from notion_scholar.download import download
-from notion_scholar.run import run
-from notion_scholar.utilities import get_token
+from bib2_notiondb.config import ConfigManager
+from bib2_notiondb.download import download
+from bib2_notiondb.run import run
+from bib2_notiondb.utilities import get_token
 
 
 def get_parser():
@@ -12,8 +12,8 @@ def get_parser():
     config = ConfigManager().get()
 
     parser = argparse.ArgumentParser(
-        description="notion-scholar",
-        usage='Use "notion-scholar --help" or "ns --help" for more information',  # noqa: E501
+        description="bib2notiondb",
+        usage='Use "bib2notiondb --help" or "bn --help" for more information',  # noqa: E501
         formatter_class=argparse.RawTextHelpFormatter,
     )
 
@@ -30,7 +30,7 @@ def get_parser():
     run_parser = subparsers.add_parser(
         "run",
         parents=[parent_parser],
-        help="Run notion-scholar.",
+        help="Run bib2notiondb.",
     )
     run_parser.add_argument(
         "-t",
@@ -74,7 +74,7 @@ def get_parser():
         metavar="",
         help='Bibtex entries to add (must be in-between three quotes """<bib-string>"""). '
         "By default, the entries will be saved to the bib file from the config. "
-        'It is possible to disable this behavior by changing the "save" option: "ns setup -save false".',
+        'It is possible to disable this behavior by changing the "save" option: "bn setup -save false".',
     )
 
     # Download bibtex parser
@@ -93,7 +93,7 @@ def get_parser():
         help="File in which the bibtex entries will be saved.",
     )
     download_parser.add_argument(
-        "-c", "--cite_in", default=None, type=str, metavar="", required=True, help="What paper to cite in."
+        "-c", "--cite_in", default=None, type=str, metavar="", required=True, help="Which paper to download."
     )
     download_parser.add_argument(
         "-t",
@@ -119,14 +119,14 @@ def get_parser():
     clear_parser = subparsers.add_parser(  # noqa: F841
         "clear-config",
         parents=[parent_parser],
-        help="Clear the notion-scholar config.",
+        help="Clear the bib2notiondb config.",
     )
 
     # Inspect config parser
     inspect_parser = subparsers.add_parser(  # noqa: F841
         "inspect-config",
         parents=[parent_parser],
-        help="Inspect the notion-scholar config.",
+        help="Inspect the bib2notiondb config.",
     )
 
     # Setup parser
@@ -141,7 +141,7 @@ def get_parser():
         default=None,
         type=str,
         metavar="",
-        help=f"Save the bibtex file that will be used when running notion-scholar without source arguments. "
+        help=f"Save the bibtex file that will be used when running bib2notiondb without source arguments. "
         f"The path must be absolute and the file need to exist. "
         f'(current: {config.get("bib_file_path", None)})',
     )

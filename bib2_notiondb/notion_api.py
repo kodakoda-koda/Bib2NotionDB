@@ -3,7 +3,7 @@ from typing import Any, Callable, List, Union
 
 from notion_client import Client
 
-from notion_scholar.publication import Publication
+from bib2_notiondb.publication import Publication
 
 
 class Property:

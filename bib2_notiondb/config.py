@@ -7,7 +7,7 @@ from typing import Dict, Optional
 import keyring
 from platformdirs import user_config_dir
 
-from notion_scholar.utilities import (
+from bib2_notiondb.utilities import (
     NotionScholarException,
     coerce_to_absolute_path,
     get_token,
@@ -15,11 +15,11 @@ from notion_scholar.utilities import (
 
 
 class ConfigException(NotionScholarException):
-    """A config exception class for notion-scholar."""
+    """A config exception class for bib2notiondb."""
 
 
 class ConfigManager:
-    """Class that manages all the notion-scholar configuration."""
+    """Class that manages all the bib2notiondb configuration."""
 
     def __init__(
         self,
@@ -35,7 +35,7 @@ class ConfigManager:
         self.file_path = file_path
         self.database_id = database_id
 
-        directory_path = Path(user_config_dir(appname="notion-scholar"))
+        directory_path = Path(user_config_dir(appname="bib2notiondb"))
         self.config_path = directory_path.joinpath("config").with_suffix(".ini")
 
     def get_download_kwargs(self) -> dict:
@@ -90,7 +90,7 @@ class ConfigManager:
     def setup(self) -> None:
         # Save the token if provided
         if self.token is not None:
-            keyring.set_password("notion-scholar", "token", self.token)
+            keyring.set_password("bib2notiondb", "token", self.token)
 
         # Void the file_path argument if the file doesn't exist
         if self.file_path is not None:
@@ -159,10 +159,10 @@ class ConfigManager:
 
     def clear(self) -> None:
         shutil.rmtree(self.config_path.parent, ignore_errors=True)
-        keyring.delete_password("notion-scholar", "token")
+        keyring.delete_password("bib2notiondb", "token")
 
     def _update_config(self):
-        """To seamlessly upgrade from notion-scholar 0.2.0 to 0.3.0"""
+        """To seamlessly upgrade from bib2notiondb 0.2.0 to 0.3.0"""
         config = ConfigParser()
         config.read(self.config_path)
         config.add_section("Settings")

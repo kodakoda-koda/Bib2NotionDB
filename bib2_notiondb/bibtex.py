@@ -4,7 +4,7 @@ from bibtexparser import dumps, load
 from bibtexparser.bibdatabase import BibDatabase
 from bibtexparser.bparser import BibTexParser
 
-from notion_scholar.publication import Publication
+from bib2_notiondb.publication import Publication
 
 
 def get_bib_database_from_file(file_path: str) -> BibDatabase:
