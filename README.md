@@ -1,4 +1,4 @@
-# bib2notionDB
+# Bib2NotionDB
 
 NotionとPythonを用いた文献管理ツール．
 
@@ -12,7 +12,7 @@ BibtexファイルかBibtex文を用いてNotion Databaseに文献情報を追�
 以下のコマンドを実行することで`bib2notiondb`か`bn`でbib2notionDBが利用可能になります．
 
 ```
-pip install git+https://github.com/kodakoda-koda/bib2notionDB#egg=bib2notiondb
+pip install git+https://github.com/kodakoda-koda/Bib2NotionDB#egg=bib2notiondb
 ```
 
 <details><summary>Pythonとpipを利用したことがない場合</summary>
