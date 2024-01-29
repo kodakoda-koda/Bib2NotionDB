@@ -31,7 +31,7 @@ pip install git+https://github.com/kodakoda-koda/bib2notionDB#egg=bib2notiondb
 
 **テンプレート**
 
-[Link to the template](https://thomashirtz.notion.site/Bibliography-408958535d9140ec9ee557eb044bb97a)
+[Link to the template](https://hungry-tungsten-787.notion.site/Notion-Scholar-Template-ecfec86a175240fda7b90ce54ca2db2e?pvs=4)
 
 ### 2. integrationを作成
 Notion Databaseとの接続を可能にするために，[Notion integration](https://www.notion.so/my-integrations)を作成する．
