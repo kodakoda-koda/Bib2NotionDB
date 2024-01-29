@@ -155,33 +155,7 @@ class ConfigManager:
                     "A function will be executed in order to update the config. "
                     "If some problems arise in the future, please run `ns clear-config`"
                 )
-                return self._update_config()
 
     def clear(self) -> None:
         shutil.rmtree(self.config_path.parent, ignore_errors=True)
         keyring.delete_password("bib2notiondb", "token")
-
-    def _update_config(self):
-        """To seamlessly upgrade from bib2notiondb 0.2.0 to 0.3.0"""
-        config = ConfigParser()
-        config.read(self.config_path)
-        config.add_section("Settings")
-
-        dct = {("paths", "bib_file_path"): "file_path", ("notion_api", "database_id"): "database_id"}
-        for (old_section, old_option), new_option in dct.items():
-            try:
-                path = config[old_section][old_option]
-                config.set(section="Settings", option=new_option, value=path)
-                config.remove_section(old_section)
-            except KeyError:
-                pass
-
-        try:
-            config.remove_section("preferences")
-        except KeyError:
-            pass
-
-        with open(self.config_path, "w") as configfile:
-            config.write(configfile)
-
-        return dict(config["Settings"])
