@@ -40,6 +40,9 @@ def run(
         database_id=database_id,
     )
 
+    if not publication_list:
+        raise ValueError("Couldn't find any publication to add. Please check Bibtex string/file.")
+
     publication_list_filtered = [p for p in publication_list if p.key not in key_list]  # noqa: E501
     add_publications_to_database(
         publications=publication_list_filtered,
@@ -47,7 +50,7 @@ def run(
         database_id=database_id,
     )
 
-    if not publication_list_filtered and publication_list:
+    if not publication_list_filtered:
         print("\nAll the publications are already present in the database.")
 
     return 0
