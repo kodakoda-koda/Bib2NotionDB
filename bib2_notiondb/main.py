@@ -11,14 +11,14 @@ def get_parser():
     token = get_token()
     config = ConfigManager().get()
 
-    # Parent parser
-    parent_parser = argparse.ArgumentParser(add_help=False)
-
     parser = argparse.ArgumentParser(
         description="bib2notiondb",
-        usage=f'Use "bib2notiondb --help" or "bn --help" for more information. \n',  # noqa: E501
+        usage=f'Use "bib2notiondb --help" or "bn --help" for more information \n',  # noqa: E501
         formatter_class=argparse.RawTextHelpFormatter,
     )
+
+    # Parent parser
+    parent_parser = argparse.ArgumentParser(add_help=False)
 
     # Choice of the subparser
     subparsers = parser.add_subparsers(
