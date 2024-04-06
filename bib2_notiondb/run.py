@@ -47,7 +47,7 @@ def run(
         database_id=database_id,
     )
 
-    if not publication_list_filtered and publication_list:
+    if not publication_list_filtered:
         print("\nAll the publications are already present in the database.")
 
     return 0
