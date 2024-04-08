@@ -48,6 +48,9 @@ def run(
     )
 
     if not publication_list_filtered:
-        print("\nAll the publications are already present in the database.")
+        if not publication_list:
+            print("\nInvalid BibTex string/file.")
+        else:
+            print("\nAll the publications are already present in the database.")
 
     return 0
