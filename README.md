@@ -77,7 +77,7 @@ bn run -f <bib-file-path>
 bn run -s """<bib-string>"""
 ```
 
-### 参考文献のBibtexファイルを出力する
+### 参考文献のBibtexファイルを出力する（オリジナル）
 1. Notionを開き，参考文献に追加したい論文の`Cite_in`に同じラベル<paper_label>をつける．
 2. 以下のコマンドを実行する:
 ```
